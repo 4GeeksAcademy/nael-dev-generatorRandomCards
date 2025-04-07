@@ -33,11 +33,27 @@ function joinIconNumber(suit) {
   }
   return '♦';
 }
+let suit = joinIconNumber(randomSuit);
 
-let palo = joinIconNumber(randomSuit);
+function classBySuit(number)
+{
+  if (number === 1 || number === 2) {
+    return 'black';
+  }
+  
+  return 'red';
+}
+
+let color = classBySuit(randomSuit);
+
+
+
 
 document.getElementById('card').textContent = numberCard(randomNumber);
-document.getElementById('arriba').textContent = palo;
+document.getElementById('up').textContent = suit;
+document.getElementById('down').textContent = suit;
+document.getElementById('up').className = color;
+document.getElementById('down').className= color;
 
 
 
