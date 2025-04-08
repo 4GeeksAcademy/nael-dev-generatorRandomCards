@@ -17,11 +17,26 @@
   <body>
     <!-- Write your HTML code here, you can delete everything withing the body tags -->
     <div  class="container-fluid text-center card my-5 border border-black ">
-      <div id="up" class="icon-up p-0 "></div>
+      <div id="icon-up" class="p-0 "></div>
       <div id="card"></div>
-      <div id="down" class ="icon-down p-0"> </div>
+      <div id="icon-down" class ="p-0"> </div>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <div class="col-1 ">
+        <input id ="card-width" type="text" class="form-control" placeholder="Ancho" aria-label="width"
+        inputmode="numeric" pattern="\d*" minlength ="2" maxlength="3">
+      </div>
+      <div class="col-1">
+        <input id ="card-height" type="text" class="form-control" placeholder="Largo" aria-label="height"
+        inputmode="numeric" pattern="\d*" minlength ="2" maxlength="3">
+      </div>
+    </div>
+     
+    <div class="d-flex justify-content-center my-5">
+      <button  type="button" class=" btn btn-primary" id="but-generate">Generar Carta</button>
     </div>
 
+    
     <!-- Do not delete this script tag, this is what connects your HTML with the Javascript code -->
     <script type="module" src="/app.js"></script>
   </body>
