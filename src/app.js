@@ -19,44 +19,39 @@ function generateCardRandom() {
     return (randomNum + 1).toString();
 
   }
-  let randomCenterNumber = numberCard(randomNumber);
+
 
 
   function joinIconNumber(suit) {
-    if (suit === 1) {
-      return '♠';
-    }
-    if (suit === 2) {
-      return '♣';
-    }
-    if (suit === 3) {
-      return '♥';
-    }
+    if (suit === 1) return '♠';
+    if (suit === 2) return '♣';
+    if (suit === 3) return '♥';
     return '♦';
   }
-  let suit = joinIconNumber(randomSuit);
+
 
 
   function classBySuit(number) {
-    if (number === 1 || number === 2) {
-      return 'black';
-    }
-
-    return 'red';
+    return (number === 1 || number === 2) ? 'black' : 'red';
   }
 
+
+  let randomCenterNumber = numberCard(randomNumber);
+  let suit = joinIconNumber(randomSuit);
   let color = classBySuit(randomSuit);
 
-  setInterval(generateCardRandom, 10000); 
-    
+  let iconUp = document.querySelector('.icon-up');
+  let iconDown = document.querySelector('.icon-down');
 
+  document.getElementById('card').textContent = randomCenterNumber;
+  iconUp.textContent = suit;
+  iconDown.textContent = suit;
+  document.querySelector('.icon-up').classList.add(color);
+  document.querySelector('.icon-down').classList.add(color);
 
-
-document.getElementById('card').textContent = randomCenterNumber;
-document.getElementById('icon-up').textContent = suit;
-document.getElementById('icon-down').textContent = suit;
-document.getElementById('icon-up').className = color;
-document.getElementById('icon-down').className = color;
+  const oppositeColor = color === 'black' ? 'red' : 'black';
+  document.querySelector('.icon-up').classList.remove(oppositeColor);
+  document.querySelector('.icon-down').classList.remove(oppositeColor);
 
 }
 
@@ -64,15 +59,24 @@ document.getElementById('icon-down').className = color;
 window.onload = function () {
   //write your code here
   generateCardRandom()
- 
-  document.getElementById('but-generate').addEventListener('click',()=>{
+
+  let timerInterval;
+  timerInterval = setInterval(generateCardRandom, 10000);
+
+
+  document.getElementById('but-generate').addEventListener('click', () => {
+
+    clearInterval(timerInterval);
+
     generateCardRandom()
+
     const width = document.getElementById('card-width').value;
-   
+    document.querySelector('.card').style.width = width + "px";
+
     const height = document.getElementById('card-height').value;
     document.querySelector('.card').style.height = height + "px";
-    
+    timerInterval = setInterval(generateCardRandom, 10000);
   });
 
-  
+
 };
